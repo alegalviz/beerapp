@@ -7,6 +7,7 @@ export default async function (params = []) {
     // API base URL
     const baseURL = 'https://api.punkapi.com/v2'
 
+    // Reduce function to create the query string, checking available api params
     let paramsQS = params.reduce((acu, actual) => {
       let key = Object.keys(actual)[0]
       if (paramsInterface.includes(key)) {
