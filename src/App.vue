@@ -5,6 +5,9 @@
 </template>
 
 <style lang="scss">
+  body {
+    background: #504640 !important;
+  }
   html.ios {
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
