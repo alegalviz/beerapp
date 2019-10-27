@@ -43,8 +43,9 @@
 <script>
 import Beers from "@/components/Beers.vue";
 import FilterOptions from "@/components/FilterOptions.vue";
-import Sidebar from "@/views/Sidebar.vue"
-import beersMock from "../../tests/unit/mocks/beers.mock";
+import Sidebar from "@/components/Sidebar.vue"
+// import beersMock from "../../tests/unit/mocks/beers.mock";
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: "home",
@@ -60,11 +61,17 @@ export default {
     };
   },
   computed: {
-    currentBeers() {
-      return beersMock;
-    }
+    ...mapState({
+      currentBeers: (state) => state.beers
+    })
+    // currentBeers() {
+    //   return beersMock;
+    // }
   },
   methods: {
+    ...mapActions([
+      'fetchBeers'
+    ]),
     toggleSidebar() {
       this.sidebarVisible = !this.sidebarVisible;
     },
@@ -81,15 +88,15 @@ export default {
       this.$router.push({name: 'home'})
     }
   },
+  async mounted () {
+    await this.fetchBeers()
+    this.beerVisible = this.$route.name === 'beer'
+  },
   watch: {
-    $route(to, from) {
-      console.log(to.name, from)
+    $route(to) {
       if (to.name === 'beer') {
         this.openABeer()
       }
-    },
-    beerVisible: function (newValue) {
-      console.log(newValue)
     }
   }
 };

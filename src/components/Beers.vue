@@ -33,6 +33,8 @@ export default {
 <style lang="scss">
   .masonry.grid {
     display: block !important;
+    column-count: 1;
+    column-gap: 0;
   }
 
   @media only screen and (min-width: 768px) {
