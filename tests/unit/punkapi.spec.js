@@ -37,11 +37,13 @@ describe('Services', () => {
       {hops: 'some'},
       {malt: 'some'},
       {food: 'some'},
-      {ids: 'some'}
+      {ids: 'some'},
+      {page: 2},
+      {per_page: 30}
     ])
 
     expect(global.fetch).toHaveBeenCalledWith(
-      'https://api.punkapi.com/v2/beers?abv_gt=some&abv_lt=some&ibu_gt=some&ibu_lt=some&ebc_gt=some&ebc_lt=some&beer_name=some&yeast=some&brewed_before=some&brewed_after=some&hops=some&malt=some&food=some&ids=some'
+      'https://api.punkapi.com/v2/beers?abv_gt=some&abv_lt=some&ibu_gt=some&ibu_lt=some&ebc_gt=some&ebc_lt=some&beer_name=some&yeast=some&brewed_before=some&brewed_after=some&hops=some&malt=some&food=some&ids=some&page=2&per_page=30'
     )
   })
   it('Fetch data with invalid params', async () => {
@@ -56,13 +58,23 @@ describe('Services', () => {
       'https://api.punkapi.com/v2/beers?ids=some'
     )
   })
-  it('Fetch data with invalid type param', async () => {
-    let error
-    try {
-      await beerApi('some');
-    } catch (e) {
-      error = e;
-    }
-    expect(error).toEqual(TypeError('params.reduce is not a function'));
+  it('Fetch data with null params', async () => {
+    await beerApi(
+    [
+      {ids: null}
+    ])
+
+    expect(global.fetch).toHaveBeenCalledWith(
+      'https://api.punkapi.com/v2/beers'
+    )
   })
+  // it('Fetch data with invalid type param', async () => {
+  //   let error
+  //   try {
+  //     await beerApi('some');
+  //   } catch (e) {
+  //     error = e;
+  //   }
+  //   expect(error).toEqual(TypeError('params.reduce is not a function'));
+  // })
 })
