@@ -3,30 +3,38 @@
     <div class="main">
       <sui-sidebar-pushable>
         <!-- Sidebar Menu -->
-        <sui-sidebar
-          :visible="sidebarVisible"
-          animation="push"
-          class="ui vertical wide sidebar menu"
+        <Sidebar
+          :toggle-sidebar="toggleSidebar"
+          :sidebarVisible="sidebarVisible"
+          from="left"
         >
-          <a class="active item">Beers!</a>
-          <a class="item">Log out</a>
-        </sui-sidebar>
+          <FilterOptions></FilterOptions>
+        </Sidebar>
 
-        <sui-sidebar-pusher :dimmed="sidebarVisible" class @click="sidebarVisible = false">
-          <div class="ui fixed text">
-            <div class="ui large secondary menu">
-              <a class="toc item" @click.stop="toggleSidebar()">
-                <i class="sidebar icon"></i>
-              </a>
-            </div>
+        <sui-sidebar-pusher :dimmed="sidebarVisible || beerVisible" class @click="closeSidebars()">
+          <div class="ui top menu attached">
+            <a class="toc item" @click.stop="toggleSidebar()">
+              <i class="filter icon"></i>Filter options
+            </a>
           </div>
-          <Beers :beers="currentBeers" />
+          <div class="main-content">
+            <Beers :beers="currentBeers"/>
+          </div>
           <footer>
             <div class="ui container">
               <p>alegalviz - 2019</p>
             </div>
           </footer>
         </sui-sidebar-pusher>
+
+        <Sidebar
+          :toggle-sidebar="toggleBeerSidebar"
+          :sidebarVisible="beerVisible"
+          width="very wide"
+          from="right"
+        >
+          <router-view />
+        </Sidebar>
       </sui-sidebar-pushable>
     </div>
   </div>
@@ -34,16 +42,21 @@
 
 <script>
 import Beers from "@/components/Beers.vue";
+import FilterOptions from "@/components/FilterOptions.vue";
+import Sidebar from "@/views/Sidebar.vue"
 import beersMock from "../../tests/unit/mocks/beers.mock";
 
 export default {
   name: "home",
   components: {
-    Beers
+    Beers,
+    Sidebar,
+    FilterOptions
   },
   data() {
     return {
-      sidebarVisible: false
+      sidebarVisible: false,
+      beerVisible: false
     };
   },
   computed: {
@@ -54,6 +67,29 @@ export default {
   methods: {
     toggleSidebar() {
       this.sidebarVisible = !this.sidebarVisible;
+    },
+    toggleBeerSidebar() {
+      this.beerVisible = !this.beerVisible;
+    },
+    openABeer() {
+      console.log('open')
+      this.beerVisible = true
+    },
+    closeSidebars() {
+      this.sidebarVisible = false
+      this.beerVisible = false
+      this.$router.push({name: 'home'})
+    }
+  },
+  watch: {
+    $route(to, from) {
+      console.log(to.name, from)
+      if (to.name === 'beer') {
+        this.openABeer()
+      }
+    },
+    beerVisible: function (newValue) {
+      console.log(newValue)
     }
   }
 };
@@ -61,6 +97,10 @@ export default {
 <style scoped lang="scss">
 .pusher {
   min-height: 100vh;
+  padding-bottom: 100px;
+}
+.main-content {
+  margin-top: 30px;
 }
 footer {
   position: absolute;
@@ -72,5 +112,15 @@ footer {
   background-color: #f8f8f8;
   margin-top: 0;
   margin-bottom: 0;
+}
+/* fixed fix */
+.pushable:not(body) {
+  transform: none;
+}
+
+.pushable:not(body) > .ui.sidebar,
+.pushable:not(body) > .fixed,
+.pushable:not(body) > .pusher:after {
+  position: fixed;
 }
 </style>
