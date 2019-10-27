@@ -19,18 +19,18 @@
     </p>
     <div class="ui horizontal segments">
       <div class="abv ui segment">
-        ABV <span :style="`color: ${colored(beer.abv * 10)};`">{{beer.abv}}</span>
+        <span title="Alcohol By Volume">ABV</span> <span :style="`color: ${colored(beer.abv * 10)};`">{{beer.abv}}</span>
       </div>
       <div class="ibu ui segment">
-        IBU <span :style="`color: ${colored(beer.ibu)};`">{{beer.ibu}}</span>
+        <span title="International Bitterness Units">IBU</span> <span :style="`color: ${colored(beer.ibu)};`">{{beer.ibu}}</span>
       </div>
     </div>
     </sui-card-content>
     <sui-card-content extra>
       <span slot="right">
-        <sui-icon name="heart outline" /> {{ Math.floor(Math.random() * 30)}} likes
+        <sui-icon name="heart outline" /> {{ randomize(30) }} likes
       </span>
-      <sui-icon name="comment" /> {{ Math.floor(Math.random() * 10)}} comments
+      <sui-icon name="comment" /> {{ randomize(10) }} comments
     </sui-card-content>
     <router-link
       :to="{ name: 'beer', params: { beerId: beer.id }}"
@@ -42,7 +42,7 @@
   </sui-card>
 </template>
 <script>
-
+import { colored, randomize } from '@/utils'
 export default {
   name: 'Beer',
   props: {
@@ -53,20 +53,14 @@ export default {
   },
   data () {
     return {
+      colored: colored,
+      randomize: randomize
     }
   },
   computed: {
     year () {
       const first_brewed = this.beer.first_brewed.split('/');
       return first_brewed[1]
-    }
-  },
-  methods: {
-    colored (number) {
-      var r = Math.floor((255 * number) / 100),
-          g = Math.floor((255 * (100 - number)) / 100),
-          b = 0;
-      return "rgb(" + r + "," + g + "," + b + ")"
     }
   }
 }
