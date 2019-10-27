@@ -1,6 +1,11 @@
 // API base URL
 const BASE_URL = 'https://api.punkapi.com/v2'
 
+/*
+ * @params Array
+ * Description: Fetch beers from bpunkapi with params. Param list from documentation.
+ * Returns a promise
+ */
 export default async function (params = []) {
   const paramsInterface = [
     'abv_gt', 'abv_lt', 'ibu_gt', 'ibu_lt', 'ebc_gt', 'ebc_lt', 'beer_name',
@@ -8,7 +13,6 @@ export default async function (params = []) {
   ]
   try {
     // Reduce function to create the query string, checking available api params
-    debugger
     let paramsQS = params.reduce((acu, actual) => {
       let key = Object.keys(actual)[0]
       if (paramsInterface.includes(key) && actual[key]) {
