@@ -52,4 +52,7 @@ export default {
 .close-link {
   border: none !important;
 }
+@media screen {
+  
+}
 </style>
