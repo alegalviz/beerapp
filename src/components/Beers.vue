@@ -1,7 +1,7 @@
 <template>
-  <div class="ui four column stackable grid container">
+  <div class="ui four column doubling masonry grid container">
     <div
-      class="column stretched"
+      class="column"
       v-for="beer of beers"
       :key="beer.id"
     >
@@ -30,6 +30,25 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
+  .masonry.grid {
+    display: block !important;
+  }
 
+  @media only screen and (min-width: 768px) {
+    .masonry.grid {
+      column-count: 2;
+      column-gap: 0;
+    }
+
+    .ui.doubling.masonry.grid[class*="four column"] > .column {
+      width: 100% !important;
+    }
+  }
+
+  @media only screen and (min-width: 992px) {
+    .masonry.grid {
+      column-count: 4;
+    }
+  }
 </style>

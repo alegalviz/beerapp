@@ -1,8 +1,10 @@
 <template>
   <sui-card class="beer">
-    <sui-card-content class="beer-header">
+    <sui-card-content class="header beer-header">
       <h3 class="left floated name">{{beer.name}}</h3>
-      <sui-card-meta slot="right">{{year}}</sui-card-meta>
+      <sui-card-meta slot="right" :title="`First brewed: ${beer.first_brewed}`">
+        {{year}}
+      </sui-card-meta>
     </sui-card-content>
     <sui-card-content class="beer-body">
       <sui-image
@@ -11,21 +13,32 @@
       class="image"
       floated="left"
     />
+    <p class="tagline"><i class="float right">{{beer.tagline}}</i></p>
+    <p class="descript">
+      {{beer.description}}
+    </p>
+    <div class="ui horizontal segments">
+      <div class="abv ui segment">
+        ABV <span :style="`color: ${colored(beer.abv * 10)};`">{{beer.abv}}</span>
+      </div>
+      <div class="ibu ui segment">
+        IBU <span :style="`color: ${colored(beer.ibu)};`">{{beer.ibu}}</span>
+      </div>
+    </div>
     </sui-card-content>
-    <sui-card-content>
+    <sui-card-content extra>
       <span slot="right">
         <sui-icon name="heart outline" /> {{ Math.floor(Math.random() * 30)}} likes
       </span>
       <sui-icon name="comment" /> {{ Math.floor(Math.random() * 10)}} comments
     </sui-card-content>
-    <sui-card-content extra>
-      <sui-input
-        placeholder="Add Comment"
-        icon="heart outline"
-        icon-position="left"
-        transparent
-      />
-    </sui-card-content>
+    <router-link
+      :to="{ name: 'beer', params: { beerId: beer.id }}"
+      class="ui bottom attached button"
+      @click.native="$event.stopImmediatePropagation()"
+    >
+      Read more!
+    </router-link>
   </sui-card>
 </template>
 <script>
@@ -47,6 +60,14 @@ export default {
       const first_brewed = this.beer.first_brewed.split('/');
       return first_brewed[1]
     }
+  },
+  methods: {
+    colored (number) {
+      var r = Math.floor((255 * number) / 100),
+          g = Math.floor((255 * (100 - number)) / 100),
+          b = 0;
+      return "rgb(" + r + "," + g + "," + b + ")"
+    }
   }
 }
 </script>
@@ -56,7 +77,37 @@ export default {
     max-width: 80%;
   }
   &-body {
-    min-height: 200px;
+    min-height: 120px;
+  }
+  .tagline {
+    text-align: right;
+    margin-top: 20px !important;
+    font-size: 16px;
+  }
+  .descript {
+    color: rgb(77, 77, 77);
+    max-height: 115px;
+    overflow: hidden;
+    position: relative;
+    clear: both;
+    &:after {
+      content: '';
+      display: block;
+      height: 50%;
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background-image: linear-gradient(to bottom, transparent, white);
+      width: 100%;
+      right: 0;
+    }
+  }
+  .beer-body {
+    position: relative;
+  }
+  .abv, .ibu {
+    font-size: 16px;
+    font-weight: bold;
   }
 }
 </style>
