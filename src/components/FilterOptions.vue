@@ -25,23 +25,24 @@
     <div class="filters">
       <div class="ui field beer-name">
         <label>Beer name</label>
-        <input type="text" name="beer-name" placeholder="Beer name">
+        <input type="text" v-model="beerName" name="beer-name" placeholder="Beer name">
       </div>
     </div>
     <div class="filters">
       <div class="ui field">
         <label>Yeast name</label>
-        <input type="text" name="yeast-name" placeholder="Yeast name">
+        <input type="text" v-model="yeastName" name="yeast-name" placeholder="Yeast name">
       </div>
     </div>
     <div class="filters segment">
-      <button class="ui button right floated" type="submit">Apply filters</button>
+      <button class="ui primary button right floated" @click="getBeersWithParams" type="submit">Apply filters</button>
     </div>
   </div>
 </template>
 <script>
 import VueSlider from 'vue-slider-component'
 import 'vue-slider-component/theme/default.css'
+import { mapActions, mapMutations } from 'vuex'
 
 export default {
   name: 'FilterOptions',
@@ -59,7 +60,28 @@ export default {
       filterEBC: [0, 70],
       marksABV: [0, 10, 20, 30, 40],
       marksIBU: [0, 30, 60, 90, 120],
-      marksEBC: [0, 10, 30, 70]
+      marksEBC: [0, 10, 30, 70],
+      beerName: '',
+      yeastName: ''
+    }
+  },
+  methods: {
+    ...mapMutations([
+      'setBeersParams'
+    ]),
+    ...mapActions([
+      'fetchBeers'
+    ]),
+    async getBeersWithParams() {
+      const params = {};
+      [params.abv_gt, params.abv_lt] = this.filterABV;
+      [params.ibu_gt, params.ibu_lt] = this.filterIBU;
+      [params.ebc_gt, params.ebc_lt] = this.filterEBC;
+      params.beer_name = this.beerName
+      params.yeast_name = this.yeastName
+      console.log(params)
+      this.setBeersParams(params)
+      await this.fetchBeers()
     }
   }
 }

@@ -40,6 +40,7 @@ export default new Vuex.Store({
     setBeers (state, beers) {
       state.beers = beers
     },
+    //Merge one beer into the array
     mergeBeer (state, beer) {
       state.beers.concat(beer)
     },
@@ -53,11 +54,13 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    // Fetch beers with store params
     async fetchBeers ({state, commit}) {
       const parameters = Object.entries(state.beersparams)
       const response = await beerApi(parameters)
       commit('setBeers', response)
     },
+    // Fetch one beer if needed
     async fetchBeer({
       commit
     }, beerId) {

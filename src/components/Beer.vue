@@ -14,9 +14,7 @@
       floated="left"
     />
     <p class="tagline"><i class="float right">{{beer.tagline}}</i></p>
-    <p class="descript">
-      {{beer.description}}
-    </p>
+    <p class="descript">{{beer.description}}</p>
     <div class="ui horizontal segments">
       <div class="abv ui segment">
         <span title="Alcohol By Volume">ABV</span> <span :style="`color: ${colored(beer.abv * 10)};`">{{beer.abv}}</span>
