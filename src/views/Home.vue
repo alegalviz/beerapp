@@ -79,13 +79,12 @@ export default {
       this.beerVisible = !this.beerVisible;
     },
     openABeer() {
-      console.log('open')
       this.beerVisible = true
     },
     closeSidebars() {
       this.sidebarVisible = false
       this.beerVisible = false
-      this.$router.push({name: 'home'})
+      if (this.$route.name === 'beer') { this.$router.push({name: 'home'}) }
     }
   },
   async mounted () {
