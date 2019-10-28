@@ -14,9 +14,9 @@ export default async function (params = []) {
   try {
     // Reduce function to create the query string, checking available api params
     let paramsQS = params.reduce((acu, actual) => {
-      let key = Object.keys(actual)[0]
-      if (paramsInterface.includes(key) && actual[key]) {
-        acu.push(`${key}=${actual[key]}`)
+      let [key, value] = actual
+      if (paramsInterface.includes(key) && value) {
+        acu.push(`${key}=${value}`)
       }
       return acu
     }, []).join('&')

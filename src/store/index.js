@@ -53,16 +53,15 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    async fetchBeers ({commit}) {
-      const response = await beerApi()
-      console.log(response)
+    async fetchBeers ({state, commit}) {
+      const parameters = Object.entries(state.beersparams)
+      const response = await beerApi(parameters)
       commit('setBeers', response)
     },
     async fetchBeer({
       commit
     }, beerId) {
-      const response = await beerApi([{ids: beerId}])
-      console.log(response)
+      const response = await beerApi([['ids', beerId]])
       commit('mergeBeer', response)
       return response[0]
     }

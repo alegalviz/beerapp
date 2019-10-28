@@ -24,22 +24,22 @@ describe('Services', () => {
   it('Fetch data with all valid params', async () => {
     await beerApi(
     [
-      {abv_gt: 'some'},
-      {abv_lt: 'some'},
-      {ibu_gt: 'some'},
-      {ibu_lt: 'some'},
-      {ebc_gt: 'some'},
-      {ebc_lt: 'some'},
-      {beer_name: 'some'},
-      {yeast: 'some'},
-      {brewed_before: 'some'},
-      {brewed_after: 'some'},
-      {hops: 'some'},
-      {malt: 'some'},
-      {food: 'some'},
-      {ids: 'some'},
-      {page: 2},
-      {per_page: 30}
+      ['abv_gt', 'some'],
+      ['abv_lt', 'some'],
+      ['ibu_gt', 'some'],
+      ['ibu_lt', 'some'],
+      ['ebc_gt', 'some'],
+      ['ebc_lt', 'some'],
+      ['beer_name', 'some'],
+      ['yeast', 'some'],
+      ['brewed_before', 'some'],
+      ['brewed_after', 'some'],
+      ['hops', 'some'],
+      ['malt', 'some'],
+      ['food', 'some'],
+      ['ids', 'some'],
+      ['page', 2],
+      ['per_page', 30]
     ])
 
     expect(global.fetch).toHaveBeenCalledWith(
@@ -49,9 +49,9 @@ describe('Services', () => {
   it('Fetch data with invalid params', async () => {
     await beerApi(
     [
-      {lalala: 'some'},
-      {popopo: 'some'},
-      {ids: 'some'}
+      ['lalala', 'some'],
+      ['popopo', 'some'],
+      ['ids', 'some']
     ])
 
     expect(global.fetch).toHaveBeenCalledWith(
@@ -61,7 +61,7 @@ describe('Services', () => {
   it('Fetch data with null params', async () => {
     await beerApi(
     [
-      {ids: null}
+      ['ids', null]
     ])
 
     expect(global.fetch).toHaveBeenCalledWith(
