@@ -30,11 +30,13 @@ export default new Vuex.Store({
     orderBy: 'name'
   },
   getters: {
+    // Return one beer from state by ID
     getBeerById(state) {
       return (id) => {
         return state.beers.find(b => b.id === id)
       }
     },
+    // Return an ordered array of beers
     getBeers(state) {
       return state.beers.sort((a, b) => (a[state.orderBy] > b[state.orderBy]) ? 1 : -1)
     }
@@ -56,6 +58,7 @@ export default new Vuex.Store({
     setBeersParams(state, beersparams) {
       state.beersparams = Object.assign({}, state.beersparams, beersparams)
     },
+    //Save sorting option
     setOrderBy (state, orderBy) {
       state.orderBy = orderBy
     }
