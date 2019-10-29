@@ -26,13 +26,17 @@ export default new Vuex.Store({
     pagination: {
       page: 1,
       per_page: 30
-    }
+    },
+    orderBy: 'name'
   },
   getters: {
     getBeerById(state) {
       return (id) => {
         return state.beers.find(b => b.id === id)
       }
+    },
+    getBeers(state) {
+      return state.beers.sort((a, b) => (a[state.orderBy] > b[state.orderBy]) ? 1 : -1)
     }
   },
   mutations: {
@@ -51,6 +55,9 @@ export default new Vuex.Store({
     //Merge beer params options
     setBeersParams(state, beersparams) {
       state.beersparams = Object.assign({}, state.beersparams, beersparams)
+    },
+    setOrderBy (state, orderBy) {
+      state.orderBy = orderBy
     }
   },
   actions: {

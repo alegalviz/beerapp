@@ -24,19 +24,19 @@
               <div class="hideMobile header item">Order by:</div>
                 <div class="item">
                   <div class="ui toggle checkbox">
-                    <input v-model="orderBy" value="name" type="radio" name="name" @click.stop="toogleCheckbox">
+                    <input v-model="orderBy" value="name" type="radio" name="name" @click.stop="toogleCheckbox($event)">
                     <label>Name</label>
                   </div>
                 </div>
                 <div class="item">
                   <div class="ui toggle checkbox">
-                    <input v-model="orderBy" value="abv" type="radio" name="abv" @click.stop="toogleCheckbox">
+                    <input v-model="orderBy" value="abv" type="radio" name="abv" @click.stop="toogleCheckbox($event)">
                     <label>ABV</label>
                   </div>
                 </div>
                 <div class="item">
                   <div class="ui toggle checkbox">
-                    <input v-model="orderBy" value="ibu" type="radio" name="ibu" @click.stop="toogleCheckbox">
+                    <input v-model="orderBy" value="ibu" type="radio" name="ibu" @click.stop="toogleCheckbox($event)">
                     <label>IBU</label>
                   </div>
                 </div>
@@ -73,7 +73,7 @@ import Beers from "@/components/Beers.vue";
 import FilterOptions from "@/components/FilterOptions.vue";
 import Sidebar from "@/components/Sidebar.vue"
 // import beersMock from "../../tests/unit/mocks/beers.mock";
-import { mapState, mapActions } from 'vuex'
+import { mapGetters, mapMutations, mapActions } from 'vuex'
 
 export default {
   name: "home",
@@ -91,8 +91,8 @@ export default {
     };
   },
   computed: {
-    ...mapState({
-      currentBeers: (state) => state.beers
+    ...mapGetters({
+      currentBeers: 'getBeers'
     })
     // currentBeers() {
     //   return beersMock;
@@ -101,6 +101,9 @@ export default {
   methods: {
     ...mapActions([
       'fetchBeers'
+    ]),
+    ...mapMutations([
+      'setOrderBy'
     ]),
     toggleSidebar() {
       this.sidebarVisible = !this.sidebarVisible;
@@ -116,7 +119,7 @@ export default {
     },
     toogleCheckbox(e) {
       if (e.target.value === this.orderBy) {
-        this.orderBy = ''
+        this.orderBy = 'id'
       }
     },
     closeSidebars() {
@@ -139,6 +142,9 @@ export default {
       if (to.name === 'beer') {
         this.openABeer()
       }
+    },
+    'orderBy': function (newVal) {
+      this.setOrderBy(newVal)
     }
   }
 };
