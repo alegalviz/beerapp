@@ -12,8 +12,9 @@ WT app, Beer app using punkapi.com
 # About app
 - App show by default the beers fetched from punkapi https://punkapi.com/documentation/v2
 - You can read more about each beer
-- You can apply a basic filter options about ABV, IBU and others.
+- You can apply a basic filter options about ABV, IBU and others
 - You can order the beers by name, by ibu and by abv
+- Mobile friendly design
 
 # Future steps
 - I mocked up the possibility of like a beer and create a comment.
