@@ -35,7 +35,7 @@
       </div>
     </div>
     <div class="filters segment">
-      <button class="ui primary button right floated" @click="getBeersWithParams" type="submit">Apply filters</button>
+      <button class="ui brown button right floated" @click="getBeersWithParams" type="submit">Apply filters</button>
     </div>
   </div>
 </template>
@@ -48,6 +48,18 @@ export default {
   name: 'FilterOptions',
   components: {
     VueSlider
+  },
+  props: {
+    onSubmit: {
+      type: Function,
+      required: false,
+      default: () => {}
+    },
+    toggleLoading: {
+      type: Function,
+      required: false,
+      default: () => {}
+    }
   },
   data () {
     return {
@@ -78,10 +90,12 @@ export default {
       [params.ibu_gt, params.ibu_lt] = this.filterIBU;
       [params.ebc_gt, params.ebc_lt] = this.filterEBC;
       params.beer_name = this.beerName
-      params.yeast_name = this.yeastName
-      console.log(params)
+      params.yeast = this.yeastName
       this.setBeersParams(params)
+      this.toggleLoading()
+      this.onSubmit()
       await this.fetchBeers()
+      this.toggleLoading()
     }
   }
 }
