@@ -65,6 +65,11 @@ export default {
 </script>
 <style lang="scss" scoped>
 .beer {
+  @media only screen and (max-width: 768px) {
+    &.ui.card {
+      width: 100%;
+    }
+  }
   .name {
     max-width: 80%;
   }

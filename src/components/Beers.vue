@@ -1,5 +1,5 @@
 <template>
-  <div class="ui four column doubling masonry grid container">
+  <div class="ui four column stackable masonry grid container">
     <div
       class="column"
       v-for="beer of beers"
@@ -37,13 +37,21 @@ export default {
     column-gap: 0;
   }
 
+  @media only screen and (max-width: 768px) {
+    .ui.toggle.checkbox input~label {
+      padding-left: 10px;
+      padding-top: 30px;
+      padding-right: 10px;
+    }
+  }
+
   @media only screen and (min-width: 768px) {
     .masonry.grid {
       column-count: 2;
       column-gap: 0;
     }
 
-    .ui.doubling.masonry.grid[class*="four column"] > .column {
+    .ui.masonry.grid[class*="four column"] > .column {
       width: 100% !important;
     }
   }
