@@ -18,6 +18,6 @@ WT app, Beer app using punkapi.com
 
 # Future steps
 - I mocked up the possibility of like a beer and create a comment.
-- It would be usefull if the suggested meals can be clicked to filter bears
+- It would be usefull if the suggested meals can be clicked to filter beers
 - It would be awesome to order a meal using 3th party delivery apps
 - Order by most liked or most commented
