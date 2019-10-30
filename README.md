@@ -8,6 +8,7 @@ WT app, Beer app using punkapi.com
 
 # Access the code
 - Code can be found in this repo https://github.com/alegalviz/beerapp
+- You can see a demo here: http://alegalviz.com.ar/beerapp/
 
 # About app
 - App show by default the beers fetched from punkapi https://punkapi.com/documentation/v2
