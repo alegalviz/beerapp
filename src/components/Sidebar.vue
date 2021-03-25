@@ -26,13 +26,6 @@ export default {
       type: Boolean,
       required: true
     },
-    from: {
-      type: String,
-      required: false,
-      default: () => {
-        return 'right'
-      }
-    },
     width: {
       type: String,
       required: false,
