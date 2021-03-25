@@ -3,7 +3,7 @@
     :visible="sidebarVisible"
     animation="overlay"
     :direction="from"
-    :class="`ui vertical ${width} sidebar`"
+    :class="`ui vertical ${width} sidebar some-class`"
   >
     <div :class="`ui segment attached ${oposite} aligned close-link`" @click.stop="toggleSidebar()"><i class="close link icon"></i></div>
     <div class="ui fixed">
