@@ -41,6 +41,19 @@
           </button>
         </div>
 
+        <div id="b" class="user-details__details-item">
+          <p class="lead">dummy:</p>
+          <p class="data user-details__method">
+            {{ dummy3 }}
+          </p>
+          <button
+            v-if="b"
+            @click="$emit('updateB')"
+            class="user-details__action-btn"
+          >
+            Edit
+          </button>
+        </div>
         <div
           v-if="a"
           id="lu"
