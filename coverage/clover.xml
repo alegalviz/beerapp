@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1572326017690" clover="3.2.0">
+  <project timestamp="1572326017690" name="All files">
+    <metrics statements="25" coveredstatements="24" conditionals="9" coveredconditionals="9" methods="8" coveredmethods="8" elements="42" coveredelements="41" complexity="0" loc="25" ncloc="25" packages="4" files="5" classes="5"/>
+    <package name="src.components">
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <file name="Beer.vue" path="/Users/alejandro/Documents/worktrials/ine/beerapp/src/components/Beer.vue">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="43" count="2" type="stmt"/>
+        <line num="53" count="11" type="stmt"/>
+        <line num="60" count="11" type="stmt"/>
+        <line num="61" count="11" type="stmt"/>
+      </file>
+      <file name="Beers.vue" path="/Users/alejandro/Documents/worktrials/ine/beerapp/src/components/Beers.vue">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.services">
+      <metrics statements="12" coveredstatements="11" conditionals="7" coveredconditionals="7" methods="2" coveredmethods="2"/>
+      <file name="punkapi.service.js" path="/Users/alejandro/Documents/worktrials/ine/beerapp/src/services/punkapi.service.js">
+        <metrics statements="12" coveredstatements="11" conditionals="7" coveredconditionals="7" methods="2" coveredmethods="2"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="10" count="4" type="stmt"/>
+        <line num="14" count="4" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
+        <line num="17" count="20" type="stmt"/>
+        <line num="18" count="20" type="cond" truecount="4" falsecount="0"/>
+        <line num="19" count="17" type="stmt"/>
+        <line num="21" count="20" type="stmt"/>
+        <line num="24" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="26" count="4" type="stmt"/>
+        <line num="27" count="4" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.utils">
+      <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+      <file name="index.js" path="/Users/alejandro/Documents/worktrials/ine/beerapp/src/utils/index.js">
+        <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+        <line num="2" count="23" type="stmt"/>
+        <line num="3" count="23" type="stmt"/>
+        <line num="4" count="23" type="stmt"/>
+        <line num="5" count="23" type="stmt"/>
+        <line num="9" count="23" type="stmt"/>
+        <line num="13" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="14" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="tests.unit.mocks">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="beers.mock.js" path="/Users/alejandro/Documents/worktrials/ine/beerapp/tests/unit/mocks/beers.mock.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+  </project>
+</coverage>
