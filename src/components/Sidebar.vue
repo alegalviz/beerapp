@@ -34,7 +34,7 @@
           </p>
           <button
             v-if="b"
-            @click="$emit('update')"
+            @click="$emit('updateB')"
             class="user-details__action-btn"
           >
             Edit
