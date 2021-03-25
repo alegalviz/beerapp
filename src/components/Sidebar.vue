@@ -145,7 +145,7 @@ export default {
     position: relative;
     margin: 0 0 50px 0;
     @include mobile {
-      width: 400px;
+      width: 500px;
     }
   }
   &__avatar-wrapper {
@@ -182,7 +182,7 @@ export default {
   }
   &__details-item {
     display: flex;
-    align-items: center;
+    align-items: left;
     justify-content: flex-start;
     padding: 15px 0;
     flex-wrap: wrap;
@@ -211,7 +211,7 @@ export default {
   }
   &__dashboard-btn {
     color: var(--white);
-    display: inline-block;
+    display: inline;
     transition: 0.5s all ease;
     font-size: 16px;
     &:hover {
