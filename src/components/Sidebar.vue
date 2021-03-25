@@ -3,7 +3,7 @@
     <div class="user-details">
       <div class="user-details__avatar-wrapper">
         <img
-          class="user-details__avatar"
+          class="user-details__change"
           :src="avatar"
           alt="Icon representing the user"
         />
@@ -83,10 +83,6 @@ export default {
       type: Boolean,
       required: true,
     },
-    duss: {
-      type: Boolean,
-      required: true,
-    },
     euss: {
       type: Object,
       required: true,
@@ -143,7 +139,7 @@ export default {
     padding: 0 65px;
     text-align: center;
     padding: 0 0 20px;
-    margin: 90px 0 0 0;
+    margin: 90px 90px 0 0;
   }
   &__avatar {
     position: absolute;
