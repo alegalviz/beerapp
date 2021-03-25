@@ -38,10 +38,6 @@ export default {
       type: Boolean,
       required: true
     },
-    prop4: {
-      type: Boolean,
-      required: true
-    },
     from: {
       type: String,
       required: false,
