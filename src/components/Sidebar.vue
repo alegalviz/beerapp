@@ -3,6 +3,7 @@
     <div class="user-details">
       <div class="user-details__avatar-wrapper">
         <img
+          data-some="some"
           class="user-details__avatar"
           :src="avatar"
           alt="Icon representing the user"
@@ -34,13 +35,26 @@
           </p>
           <button
             v-if="b"
-            @click="$emit('update')"
+            @click="$emit('updateB')"
             class="user-details__action-btn"
           >
             Edit
           </button>
         </div>
 
+        <div id="b" class="user-details__details-item">
+          <p class="lead">dummy:</p>
+          <p class="data user-details__method">
+            {{ dummy3 }}
+          </p>
+          <button
+            v-if="b"
+            @click="$emit('updateB')"
+            class="user-details__action-btn"
+          >
+            Edit
+          </button>
+        </div>
         <div
           v-if="a"
           id="lu"
@@ -54,7 +68,7 @@
             Edit
           </button>
         </div>
-      </div>
+      </div>some change before space
     </div>
   </section>
 </template>
@@ -80,10 +94,6 @@ export default {
       required: true,
     },
     cuss: {
-      type: Boolean,
-      required: true,
-    },
-    duss: {
       type: Boolean,
       required: true,
     },
@@ -136,14 +146,14 @@ export default {
     position: relative;
     margin: 0 0 50px 0;
     @include mobile {
-      width: 400px;
+      width: 500px;
     }
   }
   &__avatar-wrapper {
     padding: 0 65px;
     text-align: center;
     padding: 0 0 20px;
-    margin: 90px 0 0 0;
+    margin: 90px 90px 0 0;
   }
   &__avatar {
     position: absolute;
@@ -173,7 +183,7 @@ export default {
   }
   &__details-item {
     display: flex;
-    align-items: center;
+    align-items: left;
     justify-content: flex-start;
     padding: 15px 0;
     flex-wrap: wrap;
@@ -202,7 +212,7 @@ export default {
   }
   &__dashboard-btn {
     color: var(--white);
-    display: inline-block;
+    display: inline;
     transition: 0.5s all ease;
     font-size: 16px;
     &:hover {
