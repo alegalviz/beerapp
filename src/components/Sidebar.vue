@@ -3,7 +3,8 @@
     <div class="user-details">
       <div class="user-details__avatar-wrapper">
         <img
-          class="user-details__change"
+          data-some="some"
+          class="user-details__avatar"
           :src="avatar"
           alt="Icon representing the user"
         />
