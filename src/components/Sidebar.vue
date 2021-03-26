@@ -26,22 +26,6 @@ export default {
       type: Boolean,
       required: true
     },
-    prop1: {
-      type: Boolean,
-      required: true
-    },
-    prop2: {
-      type: Boolean,
-      required: true
-    },
-    prop3: {
-      type: Boolean,
-      required: true
-    },
-    prop4: {
-      type: Boolean,
-      required: true
-    },
     from: {
       type: String,
       required: false,
